@@ -14,8 +14,8 @@ type Iter struct {
 // New creates an Iter.
 func New(start time.Time, end time.Time, interval time.Duration) *Iter {
 	return &Iter{
-		start:    start,
-		end:      end,
+		start:    start.Round(interval),
+		end:      end.Round(interval),
 		interval: interval,
 		current:  start,
 		index:    0,

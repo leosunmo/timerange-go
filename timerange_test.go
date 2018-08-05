@@ -44,7 +44,7 @@ func TestUnevenRange(t *testing.T) {
 		}
 		i++
 	}
-	assert.Equal(t, 2, i)
+	assert.Equal(t, 3, i)
 }
 
 func TestEmptyRange(t *testing.T) {
