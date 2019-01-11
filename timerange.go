@@ -12,10 +12,19 @@ type Iter struct {
 }
 
 // New creates an Iter.
-func New(start time.Time, end time.Time, interval time.Duration) *Iter {
+func New(start time.Time, end time.Time, interval time.Duration, round bool) *Iter {
+	if round {
+		return &Iter{
+			start:    start.Round(interval),
+			end:      end.Round(interval),
+			interval: interval,
+			current:  start,
+			index:    0,
+		}
+	}
 	return &Iter{
-		start:    start.Round(interval),
-		end:      end.Round(interval),
+		start:    start,
+		end:      end,
 		interval: interval,
 		current:  start,
 		index:    0,

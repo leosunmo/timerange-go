@@ -12,7 +12,7 @@ func TestRange(t *testing.T) {
 	end := time.Date(2016, 8, 28, 11, 0, 0, 0, time.UTC)
 
 	i := 0
-	iter := New(start, end, time.Hour)
+	iter := New(start, end, time.Hour, false)
 	for iter.Next() {
 		current := iter.Current()
 		switch {
@@ -33,7 +33,7 @@ func TestUnevenRange(t *testing.T) {
 	end := time.Date(2016, 8, 28, 10, 30, 0, 0, time.UTC)
 
 	i := 0
-	iter := New(start, end, time.Hour)
+	iter := New(start, end, time.Hour, false)
 	for iter.Next() {
 		current := iter.Current()
 		switch {
@@ -51,6 +51,6 @@ func TestEmptyRange(t *testing.T) {
 	start := time.Date(2016, 8, 28, 9, 0, 0, 0, time.UTC)
 	end := time.Date(2016, 8, 28, 8, 0, 0, 0, time.UTC)
 
-	iter := New(start, end, time.Nanosecond)
+	iter := New(start, end, time.Nanosecond, false)
 	assert.Equal(t, false, iter.Next())
 }
